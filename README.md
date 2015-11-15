@@ -50,8 +50,8 @@ Hold Seats:
    
    Sample Request: 
    {
-      "numSeats": 9999,
-      "minLevel": "1",
+      "numSeats": 10,
+      "minLevel": "2",
       "maxLevel": "4",
       "customerEmail": "pavan.vadarevu@justyellow.com"
    }
