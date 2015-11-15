@@ -1,6 +1,6 @@
 # TicketService
 
-Ticket Service haas been implemented using
+Ticket Service has been implemented using
 
 1. Spring Boot - so that application can be demonstrated by making use of in memory database such as H2 DB and using apache tomcat server just by running mvn spring-boot:run command. Also this Service is an example for implementing Micro Services using Spring Boot.
 
@@ -16,7 +16,7 @@ Functionality Implemented
 
 3. POST API to reserve seats
 
-4. Asynchronus task to cancel seats that are held, if reservation is not done within 60 seconds after holding the seats. This is implemented using Spring Aysnc annotations (This can also be implenmented using Java FutureTasks)
+4. Asynchronous task to cancel seats that are held, if reservation is not done within 60 seconds after holding the seats. This is implemented using Spring Aysnc annotations (This can also be implemented using Java Future Tasks)
 
 Instructions to Build and Test Application
 
@@ -149,9 +149,3 @@ Reserve Seats:
    Sample Response:
    
    CONF921994
-
-
-
-
-
-
