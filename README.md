@@ -149,3 +149,58 @@ http://localhost:8080/retail/apis/?venuelevel=4
    Sample Response:
    
    CONF921994
+   
+# Exception Handling
+
+You can check the below sample error scenarios
+
+1. Request:
+   GET http://localhost:8080/retail/apis/ticketservice?venuelevel=10
+   Response:
+   HTTP/1.1 400 Bad Request
+   {"errorId":"200001","errorText":"REQUEST_VALIDATION_ERROR","errorDetail":"VenueLevel should be between 1 and 4"}
+
+2. Request:
+   POST http://localhost:8080/retail/apis/ticketservice/reserveseats
+   Response:
+   HTTP/1.1 400 Bad Request
+   {
+   "errorId": "200001",
+   "errorText": "REQUEST_VALIDATION_ERROR",
+   "errorDetail": "Missing Mandatory Input Parameter: seatHoldId and customerEmail are mandatory for reserving seats"
+   }
+
+3. Request:
+   POST http://localhost:8080/retail/apis/ticketservice/holdseats
+   Response:
+   HTTP/1.1 400 Bad Request
+   {
+   "errorId": "200001",
+   "errorText": "REQUEST_VALIDATION_ERROR",
+   "errorDetail": "Requested seats can not be more than the available seats"
+   }
+
+4. Request1:
+   POST http://localhost:8080/retail/apis/ticketservice/holdseats
+   {
+    "numSeats": 100,
+    "customerEmail": "pavan.vadarevu@justyellow.com"
+   }
+   Response1:
+   HTTP/1.1 200 OK
+   {"seatHoldStatus":[{"seatHoldId":835052,"seatNumber":"A1","seatLevel":4,"customerEmail":"pavan.vadarevu@justyellow.com"},..,..]}
+
+Async task to cancel seats which are held more than 60 seconds - started
+Async task to cancel seats which are held more than 60 seconds - ended
+Number of seats expired/cancelled = 100
+
+   Request2:
+   POST http://localhost:8080/retail/apis/ticketservice/reserveseats
+   {
+   "seatHoldId": 835052,
+   "customerEmail": "pavan.vadarevu@justyellow.com"
+   }
+   
+   HTTP/1.1 500 Internal Server Error
+   {"errorId":"200011","errorText":"RESERVATION_FULFILLMENT_ERROR","errorDetail":"Seats are not held or could have been expired, please try again"}
+   
