@@ -207,22 +207,21 @@ You can check the below sample error scenarios
    
    {"seatHoldStatus":[{"seatHoldId":835052,"seatNumber":"A1","seatLevel":4,"customerEmail":"pavan.vadarevu@justyellow.com"},..,..]}
 
-Async task to cancel seats which are held more than 60 seconds - started
+   Async task to cancel seats which are held more than 60 seconds - started
 
-Async task to cancel seats which are held more than 60 seconds - ended
+   Async task to cancel seats which are held more than 60 seconds - ended
 
-Number of seats expired/cancelled = 100
+   Number of seats expired/cancelled = 100
 
    Request2:
    
    POST http://localhost:8080/retail/apis/ticketservice/reserveseats
    
    {
-   "seatHoldId": 835052,
-   "customerEmail": "pavan.vadarevu@justyellow.com"
+     "seatHoldId": 835052,
+     "customerEmail": "pavan.vadarevu@justyellow.com"
    }
    
    HTTP/1.1 500 Internal Server Error
    
    {"errorId":"200011","errorText":"RESERVATION_FULFILLMENT_ERROR","errorDetail":"Seats are not held or could have been expired, please try again"}
-   
